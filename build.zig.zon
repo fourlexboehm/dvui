@@ -146,5 +146,9 @@
         //     .hash = "pugl-0.1.0-CUvtTsddAQAKB-zCXPw0YayfuVFRGB-ATuYPP1Nb3Xmv",
         //     .lazy = true,
         // },
+        .SDL = .{
+            .url = "git+https://github.com/fourlexboehm/SDL?ref=zig-0.17#75c42dc606a5a1ce058a1657b65aaec400bad80d",
+            .hash = "SDL-2.32.10-JToi38m4EgF0G6UjAZKuGibqp6uR0JDjWATq9gSRzpWW",
+        },
     },
 }
