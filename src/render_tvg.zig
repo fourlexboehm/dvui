@@ -164,13 +164,13 @@ fn hashValue(h: *dvui.fnv, v: anytype) void {
             },
             else => @compileError("hashValue: unsupported pointer type " ++ @typeName(T)),
         },
-        .@"struct" => |s| inline for (s.fields) |field| hashValue(h, @field(v, field.name)),
+        .@"struct" => |s| inline for (s.field_names) |field_name| hashValue(h, @field(v, field_name)),
         .@"union" => |u| {
             const tag = std.meta.activeTag(v);
             hashValue(h, tag);
-            inline for (u.fields) |field| {
-                if (@field(std.meta.Tag(T), field.name) == tag) {
-                    if (field.type != void) hashValue(h, @field(v, field.name));
+            inline for (u.field_names, u.field_types) |field_name, field_type| {
+                if (@field(std.meta.Tag(T), field_name) == tag) {
+                    if (field_type != void) hashValue(h, @field(v, field_name));
                 }
             }
         },
