@@ -149,7 +149,7 @@ fn hashValue(h: *dvui.fnv, v: anytype) void {
     const T = @TypeOf(v);
     switch (@typeInfo(T)) {
         .float => |f| {
-            const Bits = std.meta.Int(.unsigned, f.bits);
+            const Bits = @Int(.unsigned, f.bits);
             const bits: Bits = @bitCast(v);
             h.update(std.mem.asBytes(&bits));
         },
